@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102b20">
+<title>KNOW HUB — Search Everything</title>
+<style>
+:root{color-scheme:dark;--bg:#08140f;--panel:#10251b;--panel2:#173326;--green:#65e69a;--muted:#a9c0b2;--line:#294536}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#163d2b 0,#08140f 55%);color:#f2fff6;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+header{padding:22px 18px 10px;text-align:center}.brand{display:inline-flex;align-items:center;gap:11px}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#65e69a,#a6f4bd);color:#082014;font-size:23px;font-weight:900;box-shadow:0 8px 25px #65e69a22}.logo{font-size:clamp(28px,6vw,42px);font-weight:950;letter-spacing:2px;line-height:1}.logo span{color:var(--green)}.tag{color:var(--muted);margin:9px 0 0}
+.topnav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:18px auto 0}.topnav a{color:#cfe6d7;text-decoration:none;padding:7px 12px;border-radius:10px;font-size:13px;border:1px solid transparent}.topnav a:hover{border-color:var(--line);background:#ffffff08}
+main{max-width:1000px;margin:auto;padding:18px}.searchbox{display:flex;gap:10px;padding:8px;background:#0d2117;border:1px solid #355844;border-radius:16px;box-shadow:0 14px 38px #0003}.searchbox:focus-within{border-color:var(--green);box-shadow:0 0 0 3px #65e69a18}.searchbox input{min-width:0;flex:1;background:transparent;border:0;outline:0;color:white;font-size:17px;padding:10px}.searchbox button,.action{border:0;background:var(--green);color:#082014;font-weight:800;padding:12px 18px;border-radius:11px;cursor:pointer}.searchbox button:hover,.action:hover{filter:brightness(1.08)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:15px 0 26px}.chip{border:1px solid var(--line);background:#10251b;color:#d9f5e3;padding:7px 12px;border-radius:999px;cursor:pointer}.chip:hover{border-color:var(--green);background:#183b29}
+.news-section{margin:28px 0 30px}.section-kicker{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:20px;font-weight:900;letter-spacing:2px}.section-kicker:after{content:"";height:1px;flex:1;background:var(--line)}.news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.news-card{width:100%;text-align:left;font:inherit;cursor:pointer;min-height:154px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:inherit;padding:17px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(145deg,#163627,#0d2017);transition:transform .18s,border-color .18s}.news-card:hover{transform:translateY(-3px);border-color:var(--green)}.news-icon{font-size:25px}.news-label{color:var(--green);font-size:11px;font-weight:850;letter-spacing:1.3px;text-transform:uppercase}.news-card strong{font-size:16px;line-height:1.35;margin-top:9px}.news-card small{color:var(--muted);font-size:12px;margin-top:10px}.news-note{font-size:12px;color:var(--muted);margin:10px 2px 0}.news-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px}.news-item{display:block;color:inherit;text-decoration:none;background:linear-gradient(145deg,#142d20,#0e2017);border:1px solid var(--line);border-radius:14px;padding:15px;transition:border-color .18s}.news-item:hover{border-color:var(--green)}.news-item strong{display:block;line-height:1.4}.news-item small{display:block;color:var(--muted);margin-top:8px}.news-item p{color:#cfe3d5;font-size:14px;margin:9px 0 0}
+.status{color:var(--muted);padding:10px 2px}.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px}.card{background:linear-gradient(145deg,#142d20,#0e2017);border:1px solid var(--line);border-radius:18px;padding:18px;overflow:hidden}.hero{grid-column:1/-1}.title{font-size:clamp(22px,4vw,32px);line-height:1.2;margin:0 0 8px}.muted{color:var(--muted)}.thumb{max-width:180px;max-height:150px;object-fit:contain;float:right;margin:0 0 12px 16px;border-radius:10px}.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.link{display:inline-block;color:var(--green);text-decoration:none;border:1px solid #3a654a;padding:8px 11px;border-radius:10px}.link:hover{background:#193c29}.section-title{margin:25px 0 10px;font-size:20px}.result-item{display:flex;gap:12px;align-items:flex-start;color:inherit;text-decoration:none}.result-item img{width:64px;height:64px;object-fit:contain;background:#0b1b12;border-radius:10px}.result-item strong{display:block;color:#f2fff6}.result-item p{margin:3px 0;color:var(--muted);font-size:14px}.error{color:#ffd3a6}.footer{text-align:center;color:var(--muted);font-size:13px;padding:32px 12px}
+@media(max-width:680px){.news-grid{grid-template-columns:1fr}.news-card{min-height:125px}.topnav{margin-top:14px}}\n@media(max-width:520px){main{padding:12px}.searchbox{gap:5px}.searchbox button{padding:10px 12px}.thumb{max-width:100px;max-height:100px}.logo{letter-spacing:1px}.brand-mark{width:36px;height:36px}}
+
+.news-retry{border:1px solid var(--line,#355);background:var(--card,#15231d);color:inherit;padding:12px 16px;border-radius:12px;font:inherit;cursor:pointer}
+.news-retry:hover{filter:brightness(1.12)}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="brand-mark" aria-hidden="true">⌕</div><div class="logo">KNOW <span>HUB</span></div></div>
+  <p class="tag">Search topics, discover ideas, explore the web.</p>
+  <nav class="topnav" aria-label="Main navigation"><a href="#searchArea">Explore</a><a href="#news">NEWS</a><a href="#popular">Popular topics</a></nav>
+</header>
+<main>
+<form class="searchbox" id="searchForm"><input id="query" autocomplete="off" placeholder="Search Minecraft, games, science, or a website…" aria-label="Search topics" required><button type="submit">Search ↗</button></form>
+<div id="searchArea"></div><div class="chips" id="popular" aria-label="Popular searches">
+<button class="chip" data-q="Minecraft">⛏️ Minecraft</button><button class="chip" data-q="Video games">🎮 Games</button><button class="chip" data-q="Roblox">🧱 Roblox</button><button class="chip" data-q="Space exploration">🚀 Space</button><button class="chip" data-q="Artificial intelligence">🤖 AI</button><button class="chip" data-q="Dinosaurs">🦖 Dinosaurs</button>
+</div>
+<section class="news-section" id="news" aria-labelledby="newsHeading">
+  <h2 class="section-kicker" id="newsHeading">NEWS</h2>
+  <div class="news-grid">
+    <button class="news-card" type="button" data-news="gaming">
+      <span class="news-icon" aria-hidden="true">🎮</span><span class="news-label">Gaming</span>
+      <strong>Latest gaming news</strong><small>Updates, releases &amp; industry stories ↗</small>
+    </button>
+    <button class="news-card" type="button" data-news="technology">
+      <span class="news-icon" aria-hidden="true">⚡</span><span class="news-label">Technology</span>
+      <strong>What’s new in tech</strong><small>AI, gadgets &amp; innovation ↗</small>
+    </button>
+    <button class="news-card" type="button" data-news="science space">
+      <span class="news-icon" aria-hidden="true">🚀</span><span class="news-label">Science &amp; Space</span>
+      <strong>Discover the latest</strong><small>Space missions &amp; discoveries ↗</small>
+    </button>
+  </div>
+  <p class="news-note">Choose a category to load headlines right here on KNOW HUB.</p>
+  <div id="newsStatus" class="status" aria-live="polite">Select a news category to see headlines.</div>
+  <div id="newsResults" class="news-results"></div>
+</section>
+<div id="status" class="status">Search anything to start exploring.</div>
+<div id="results" class="results"></div>
+<div class="footer">KnowHub uses Wikipedia’s public APIs for encyclopedia summaries and related search results. Internet connection required.</div>
+</main>
+<script>
+const $=s=>document.querySelector(s), statusEl=$('#status'), resultsEl=$('#results'), input=$('#query');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function wikiUrl(title){return 'https://en.wikipedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'))}
+function cardHtml(item){const thumb=item.thumbnail?.source?`<img class="thumb" src="${esc(item.thumbnail.source)}" alt="">`:'';return `<article class="card hero">${thumb}<h2 class="title">${esc(item.title)}</h2><p>${esc(item.extract||'No summary available.')}</p><div class="links"><a class="link" href="${esc(item.content_urls?.desktop?.page||wikiUrl(item.title))}" target="_blank" rel="noopener">Read full wiki ↗</a></div></article>`}
+function resultHtml(item){const img=item.thumbnail?.source?`<img src="${esc(item.thumbnail.source)}" alt="">`:`<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='10' fill='%23173226'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28'%3E📚%3C/text%3E%3C/svg%3E" alt="">`;return `<a class="card result-item" href="${esc(item.content_urls?.desktop?.page||wikiUrl(item.title))}" target="_blank" rel="noopener">${img}<span><strong>${esc(item.title)}</strong><p>${esc(item.extract||'Open this encyclopedia entry.')}</p></span></a>`}
+function parseWebsite(q){
+ let candidate=q.trim();
+ if(!candidate || /\s/.test(candidate) && !/^https?:\/\//i.test(candidate)) return null;
+ if(!/^https?:\/\//i.test(candidate)) candidate='https://'+candidate;
+ try{
+  const u=new URL(candidate);
+  if(!u.hostname.includes('.') || u.hostname.includes(' ')) return null;
+  return u;
+ }catch{return null}
+}
+function websiteHtml(u){
+ const host=u.hostname.replace(/^www\./,'');
+ const nice=host.split('.').slice(0,-1).join('.')||host;
+ const display=nice.split(/[.-]/).filter(Boolean).map(w=>w[0]?.toUpperCase()+w.slice(1)).join(' ');
+ const icon='https://www.google.com/s2/favicons?domain='+encodeURIComponent(host)+'&sz=128';
+ const safeUrl=esc(u.href), safeHost=esc(host), safeName=esc(display||host);
+ return `<article class="card hero">
+ <img class="thumb" src="${icon}" alt="" onerror="this.style.display='none'">
+ <p class="muted">WEBSITE PROFILE · DOMAIN LOOKUP</p>
+ <h2 class="title">${safeName}</h2>
+ <p><strong>${safeHost}</strong></p>
+ <p>This is a website address. KnowHub can link you to the site and search publicly available information about it. The exact description and features should be verified from the website and independent sources.</p>
+ <div class="links"><a class="link" href="${safeUrl}" target="_blank" rel="noopener">Visit website ↗</a>
+ <a class="link" href="https://www.google.com/search?q=${encodeURIComponent(host)}" target="_blank" rel="noopener">Search the web ↗</a>
+ <a class="link" href="https://www.bing.com/search?q=${encodeURIComponent(host)}" target="_blank" rel="noopener">More web results ↗</a>
+ <a class="link" href="https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(host)}" target="_blank" rel="noopener">Search wiki ↗</a>
+ <a class="link" href="https://lookup.icann.org/en/lookup?name=${encodeURIComponent(host)}" target="_blank" rel="noopener">Domain details ↗</a></div>
+ </article>`;
+}
+async function search(q){
+ q=q.trim();if(!q)return;input.value=q;resultsEl.innerHTML='';statusEl.className='status';statusEl.textContent='Searching the web and encyclopedia…';
+ const website=parseWebsite(q);
+ if(website){
+  resultsEl.insertAdjacentHTML('beforeend',websiteHtml(website));
+  statusEl.textContent='Website detected. Use the web-search links for public information and the official link to visit it.';
+  // Continue with encyclopedia matches too, where available.
+  q=website.hostname.replace(/^www\./,'');
+ }
+ try{
+  const summaryUrl='https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(q.replace(/ /g,'_'));
+  const summaryRes=await fetch(summaryUrl,{headers:{'Accept':'application/json'}});
+  let summary=null;if(summaryRes.ok){const data=await summaryRes.json();if(data.type!=='disambiguation'&&data.extract)summary=data;}
+  const searchUrl='https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch='+encodeURIComponent(q)+'&gsrnamespace=0&gsrlimit=12&prop=pageimages%7Cextracts%7Cinfo&piprop=thumbnail&pithumbsize=120&exintro=1&explaintext=1&inprop=url&format=json&origin=*';
+  const searchRes=await fetch(searchUrl);if(!searchRes.ok)throw new Error('Wikipedia search could not be reached.');const data=await searchRes.json();
+  const items=Object.values(data.query?.pages||{}).sort((a,b)=>(a.index||0)-(b.index||0));
+  if(summary){resultsEl.insertAdjacentHTML('beforeend',cardHtml(summary));}
+  const related=items.filter(x=>!summary||x.title.toLowerCase()!==summary.title.toLowerCase());
+  if(related.length){resultsEl.insertAdjacentHTML('beforeend',`<h3 class="section-title" style="grid-column:1/-1">Explore related topics</h3>`+related.map(resultHtml).join(''));}
+  const count=related.length+(summary?1:0);
+  if(!count&&!website){
+   statusEl.className='status';
+   statusEl.textContent=`No encyclopedia article matched “${q}”, but you can still search the wider web:`;
+   resultsEl.insertAdjacentHTML('beforeend',`<article class="card hero"><h2 class="title">Search the wider web</h2><p>Wikipedia may not have an article for this query. Try these web search engines for more pages and sources.</p><div class="links"><a class="link" target="_blank" rel="noopener" href="https://www.google.com/search?q=${encodeURIComponent(q)}">Search Google ↗</a><a class="link" target="_blank" rel="noopener" href="https://www.bing.com/search?q=${encodeURIComponent(q)}">Search Bing ↗</a><a class="link" target="_blank" rel="noopener" href="https://duckduckgo.com/?q=${encodeURIComponent(q)}">Search DuckDuckGo ↗</a><a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(q)}">Search Wikipedia ↗</a></div></article>`);
+  }
+  else if(!website) statusEl.textContent=`Found ${count} encyclopedia result${count===1?'':'s'} for “${q}”. Open any result for the full article.`;
+  else if(count) statusEl.textContent+=` Also found ${count} related encyclopedia result${count===1?'':'s'} below.`;
+ }catch(e){
+  if(!website){statusEl.className='status error';statusEl.textContent='Could not load results. Check your internet connection and try again.';}
+  else statusEl.textContent='Website profile created. Encyclopedia results could not load, but the public web-search links above are available.';
+ }
+}
+
+const newsStatus=$('#newsStatus'), newsResults=$('#newsResults');
+function newsTime(value){try{return new Date(value).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'});}catch{return '';}}
+function renderNewsItems(items,topic){
+  if(!items.length) throw new Error('No headlines returned');
+  newsResults.innerHTML=items.slice(0,9).map(item=>{
+    const safeTitle=esc(item.title||'News story');
+    const safeLink=/^https?:\/\//i.test(item.link||'')?esc(item.link):'#';
+    const source=esc(item.source||item.author||'News source');
+    const date=esc(item.date?newsTime(item.date):'');
+    const desc=String(item.description||'').replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim().slice(0,220);
+    return `<a class="news-item" href="${safeLink}" target="_blank" rel="noopener"><strong>${safeTitle}</strong><small>${source}${date?' · '+date:''}</small>${desc?`<p>${esc(desc)}</p>`:''}</a>`;
+  }).join('');
+  newsStatus.className='status';
+  newsStatus.textContent=`Latest ${topic} headlines shown below. Selecting a headline opens its publisher's article.`;
+}
+async function loadNews(topic){
+  newsResults.innerHTML='';
+  newsStatus.className='status';
+  newsStatus.textContent=`Loading ${topic} headlines…`;
+  document.querySelectorAll('[data-news]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.news===topic)));
+  const rss='https://news.google.com/rss/search?q='+encodeURIComponent(topic)+'&hl=en-IN&gl=IN&ceid=IN:en';
+  // Try two independent feed paths because some browsers/extensions block one provider.
+  try{
+    const endpoint='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rss);
+    const response=await fetch(endpoint,{signal:AbortSignal.timeout(9000)});
+    if(!response.ok) throw new Error('RSS converter unavailable');
+    const data=await response.json();
+    if(data.status!=='ok'||!Array.isArray(data.items)||!data.items.length) throw new Error('No headlines returned');
+    renderNewsItems(data.items.map(item=>({title:item.title,link:item.link,source:item.author||item.source,date:item.pubDate,description:item.description})),topic);
+    return;
+  }catch(firstError){}
+  try{
+    const proxy='https://api.allorigins.win/raw?url='+encodeURIComponent(rss);
+    const response=await fetch(proxy,{signal:AbortSignal.timeout(9000)});
+    if(!response.ok) throw new Error('Alternate feed unavailable');
+    const xmlText=await response.text();
+    const xml=new DOMParser().parseFromString(xmlText,'text/xml');
+    if(xml.querySelector('parsererror')) throw new Error('Invalid feed');
+    const items=[...xml.querySelectorAll('item')].map(item=>({
+      title:item.querySelector('title')?.textContent||'News story',
+      link:item.querySelector('link')?.textContent||'',
+      source:item.querySelector('source')?.textContent||'News source',
+      date:item.querySelector('pubDate')?.textContent||'',
+      description:item.querySelector('description')?.textContent||''
+    }));
+    renderNewsItems(items,topic);
+    return;
+  }catch(secondError){}
+  // Do not replace failed feeds with search-engine links: keep category results on-page.
+  newsStatus.className='status error';
+  newsStatus.textContent='Live headlines could not be fetched by this browser. This can happen when opening an HTML file directly. Try again, or run the same file from a local web server. No Google/Bing search links are shown as fake headlines.';
+  newsResults.innerHTML='<button class="news-retry" type="button" id="retryNews">↻ Try loading headlines again</button>';
+  document.getElementById('retryNews')?.addEventListener('click',()=>loadNews(topic));
+}
+document.querySelectorAll('[data-news]').forEach(button=>button.addEventListener('click',()=>loadNews(button.dataset.news)));
+
+$('#searchForm').addEventListener('submit',e=>{e.preventDefault();search(input.value)});
+document.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>search(b.dataset.q)));
+input.addEventListener('keydown',e=>{if(e.key==='Escape')input.value=''});
+</script>
+</body>
+</html>
